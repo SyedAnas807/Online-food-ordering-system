@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="FlavorDash - Order delicious food online. Fast delivery, fresh ingredients, and amazing taste.">
+  <title>FlavorDash | Online Food Ordering System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍔</text></svg>">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">🍕</div>
+        <span class="logo-text">FlavorDash</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#menu" class="nav-link active">Menu</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#orders" class="nav-link">My Orders</a>
+      </nav>
+
+      <button class="cart-button" id="openCartBtn" onclick="toggleCart()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-background">
+        <img src="images/hero-burger.png" alt="Delicious Gourmet Burger">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <span class="hero-badge">🔥 Free Delivery on Orders $25+</span>
+        <h1 class="hero-title">
+          Delicious Food,<br>
+          <span class="highlight">Delivered Fast</span>
+        </h1>
+        <p class="hero-description">
+          Discover the best restaurants and cuisines in your area. Fresh ingredients,
+          amazing flavors, and lightning-fast delivery right to your door.
+        </p>
+        <a href="#menu" class="hero-cta">
+          Order Now
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+      <div class="section-header">
+        <h2 class="section-title">Our <span class="accent">Menu</span></h2>
+        <div class="filter-tabs" id="categories">
+          <button class="filter-tab active" onclick="filterMenu('all')">All</button>
+          <button class="filter-tab" onclick="filterMenu('asian')">Asian</button>
+          <button class="filter-tab" onclick="filterMenu('italian')">Italian</button>
+          <button class="filter-tab" onclick="filterMenu('american')">American</button>
+          <button class="filter-tab" onclick="filterMenu('mexican')">Mexican</button>
+          <button class="filter-tab" onclick="filterMenu('seafood')">Seafood</button>
+        </div>
+      </div>
+
+      <div class="food-grid" id="foodGrid">
+        <!-- Food cards will be rendered by JavaScript -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Full-Width Footer -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-container">
+        <!-- Column 1: About -->
+        <div class="footer-column">
+          <h3 class="footer-heading">About FlavorDash</h3>
+          <p class="footer-about">
+            FlavorDash brings the best local restaurants right to your doorstep.
+            We're passionate about connecting food lovers with amazing flavors,
+            fresh ingredients, and unforgettable dining experiences.
+          </p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Connect -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Connect</h3>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 FlavorDash. All rights reserved. | Powered by <span>Flask Backend</span></p>
+    </div>
+  </footer>
+
+  <!-- Cart Overlay -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <!-- Off-Canvas Cart Drawer -->
+  <aside class="cart-drawer" id="cartDrawer">
+    <!-- Drawer Header -->
+    <div class="drawer-header">
+      <h2 class="drawer-title">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        Your Cart
+        <span class="cart-count" id="cartCount">0 items</span>
+      </h2>
+      <button class="drawer-close-btn" onclick="toggleCart()" aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Body (Scrollable) -->
+    <div class="drawer-body">
+      <!-- Empty Cart State -->
+      <div class="cart-empty" id="cartEmpty">
+        <div class="empty-cart-illustration">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" fill="none">
+            <!-- Shadow -->
+            <ellipse cx="100" cy="165" rx="50" ry="8" fill="rgba(255,107,74,0.1)" />
+            <!-- Cart body -->
+            <path d="M45 50h110l-12 65H57L45 50z" stroke="rgba(255,107,74,0.5)" stroke-width="3"
+              fill="rgba(255,107,74,0.05)" />
+            <!-- Cart top rim -->
+            <path d="M45 50h110" stroke="rgba(255,107,74,0.6)" stroke-width="4" stroke-linecap="round" />
+            <!-- Cart wheels -->
+            <circle cx="72" cy="135" r="10" stroke="rgba(255,107,74,0.5)" stroke-width="3" fill="rgba(26,26,26,1)" />
+            <circle cx="128" cy="135" r="10" stroke="rgba(255,107,74,0.5)" stroke-width="3" fill="rgba(26,26,26,1)" />
+            <!-- Wheel centers -->
+            <circle cx="72" cy="135" r="3" fill="rgba(255,107,74,0.4)" />
+            <circle cx="128" cy="135" r="3" fill="rgba(255,107,74,0.4)" />
+            <!-- Cart handle -->
+            <path d="M45 50L32 30H18" stroke="rgba(255,107,74,0.5)" stroke-width="3" stroke-linecap="round" />
+            <!-- Empty lines inside cart -->
+            <path d="M62 70h76" stroke="rgba(255,255,255,0.08)" stroke-width="2" stroke-dasharray="6 4" />
+            <path d="M65 85h70" stroke="rgba(255,255,255,0.06)" stroke-width="2" stroke-dasharray="6 4" />
+            <path d="M68 100h64" stroke="rgba(255,255,255,0.04)" stroke-width="2" stroke-dasharray="6 4" />
+            <!-- Sad face circle -->
+            <circle cx="100" cy="82" r="22" stroke="rgba(255,107,74,0.3)" stroke-width="2" fill="rgba(13,13,13,0.5)" />
+            <!-- Eyes -->
+            <circle cx="92" cy="77" r="3" fill="rgba(255,107,74,0.5)" />
+            <circle cx="108" cy="77" r="3" fill="rgba(255,107,74,0.5)" />
+            <!-- Sad mouth -->
+            <path d="M92 92c4-4 12-4 16 0" stroke="rgba(255,107,74,0.5)" stroke-width="2" stroke-linecap="round"
+              fill="none" />
+          </svg>
+        </div>
+        <h3 class="empty-cart-title">Your cart is empty</h3>
+        <p class="empty-cart-text">Looks like you haven't added any delicious items yet!</p>
+        <a href="#menu" class="browse-menu-btn" onclick="toggleCart()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          Browse Menu
+        </a>
+      </div>
+
+      <!-- Cart Items Container -->
+      <div class="cart-items" id="cartItems" style="display: none;">
+        <!-- Cart items will be rendered by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Drawer Footer (Fixed at Bottom) -->
+    <div class="drawer-footer">
+      <div class="cart-summary">
+        <div class="cart-row">
+          <span>Subtotal</span>
+          <span id="subtotal">$0.00</span>
+        </div>
+        <div class="cart-row">
+          <span>Tax (8%)</span>
+          <span id="tax">$0.00</span>
+        </div>
+        <div class="cart-row total">
+          <span>Total</span>
+          <span id="total">$0.00</span>
+        </div>
+      </div>
+      <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+          <line x1="1" y1="10" x2="23" y2="10"></line>
+        </svg>
+        Checkout
+      </button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
