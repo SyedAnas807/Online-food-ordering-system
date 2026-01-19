@@ -1,65 +1,82 @@
-🍔 Online Food Ordering System
-A responsive, appetizing frontend interface for a modern food delivery service.
 
-📖 Overview
-This project is a web-based food ordering platform designed to provide a seamless user experience for customers. It features a visually rich menu showcasing items like burgers, pizza, ramen, and seafood, wrapped in a responsive design that works across devices.
+# 🍔 Online Food Ordering System
 
-📂 Project Structure
-The repository structure allows for easy navigation and deployment:
+A responsive web application for browsing menus, placing food orders, and managing restaurant operations. This project includes a customer-facing frontend and an admin dashboard for management.
 
-index.html: The main structure of the landing page and menu grid.
+## ✨ Features
 
-styles.css: Custom styling for the layout, product cards, and responsiveness.
+### 👤 Customer Side (`index.html`)
+* **Interactive Menu:** Browse a diverse range of food items including Italian, Mexican, Japanese, and American cuisine.
+* **Visual Appeal:** High-quality images for all menu items (Sushi, Burgers, Pizza, Desserts, etc.).
+* **Order Management:** Interface to select items and place orders.
 
-script.js: Handles interactivity (e.g., "Add to Cart" logic, menu filtering).
+### 📦 Order Tracking (`orders.html`)
+* **Order History:** View past orders and current status.
+* **Real-time Updates:** (Depending on implementation) Track the progress of your delivery.
 
-assets/: High-quality food imagery used in the menu:
+### 🛠 Admin Dashboard (`admin.html`)
+* **Control Panel:** Dedicated area for restaurant staff/admins.
+* **Data Visualization:** View order stats and manage incoming requests.
+* **Secure Access:** Separate login/interface for administrative tasks.
 
-hero-burger.png
+## 🛠️ Technologies Used
+* **HTML5** - Structure and layout
+* **CSS3** - Styling and responsive design
+* **JavaScript (ES6)** - Logic for cart management, admin dashboard, and DOM manipulation
 
-grilled-salmon.png
+## 📂 Project Structure
 
-margherita-pizza.png
+```text
+├── index.html          # Main landing page (Menu & Ordering)
+├── styles.css          # Styles for the main page
+├── script.js           # Logic for the main page
+│
+├── admin.html          # Admin Dashboard interface
+├── admin.css           # Styles for the dashboard
+├── admin.js            # Admin functionality
+│
+├── orders.html         # Order history page
+├── orders.css          # Styles for the orders page
+├── orders.js           # Order management logic
+│
+└── *.png               # Food assets (Burgers, Tacos, Sushi, etc.)
 
-spicy-ramen.png
+```
 
-✨ Key Features
-Visual Menu: High-quality image integration for an appetizing presentation.
+## 🚀 How to Run
 
-Responsive Design: Optimized layout for mobile, tablet, and desktop views.
+1. **Clone the repository:**
+```bash
+git clone [https://github.com/SyedAnas807/Your-Repo-Name.git](https://github.com/SyedAnas807/Your-Repo-Name.git)
 
-Interactive UI: Smooth hover effects and transitions on menu items.
+```
 
-🚀 Getting Started
-Since this is a static frontend project, no complex installation is required.
 
-Clone the Repository
+2. **Open in VS Code:**
+Navigate to the project folder and open it in Visual Studio Code.
+3. **Launch:**
+* Install the **"Live Server"** extension in VS Code.
+* Right-click `index.html` and select **"Open with Live Server"**.
+* To view the Admin panel, navigate to `/admin.html` in your browser.
 
-Bash
 
-git clone https://github.com/SyedAnas807/Online-food-ordering-system.git
-Launch the Site
 
-Navigate to the project folder.
+## 📸 Menu Preview
 
-Double-click index.html to open it in your default browser.
+This system supports a wide variety of cuisines, including:
 
-Tip: Use the Live Server extension in VS Code for real-time updates while developing.
+* **Main Courses:** BBQ Ribs, Grilled Salmon, Margherita Pizza, Risotto, Spicy Ramen, etc.
+* **Quick Bites:** Fish Tacos, Quesadillas, Burrito Bowls, Lobster Rolls.
+* **Desserts:** Cheesecake, Churros, Lava Cake, Tiramisu.
 
-🤝 Contributing
-Contributions are welcome! If you'd like to improve the UI or add a backend connection:
+## 👤 Author
 
-Fork the Project
+**Syed Anas**
 
-Create your Feature Branch (git checkout -b feature/NewMenu)
+* GitHub: [@SyedAnas807](https://www.google.com/search?q=https://github.com/SyedAnas807)
 
-Commit your Changes (git commit -m 'Add new menu items')
+---
 
-Push to the Branch (git push origin feature/NewMenu)
+*This project is for educational purposes.*
 
-Open a Pull Request
-
-📝 License
-Distributed under the MIT License.
-
-Maintained by SyedAnas807
+```
