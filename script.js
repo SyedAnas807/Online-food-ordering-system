@@ -56,6 +56,150 @@ const menuItems = [
     price: 18.99,
     image: "images/hero-burger.png",
     badge: "Best Seller"
+  },
+  {
+    id: 7,
+    name: "Pad Thai",
+    category: "Asian Cuisine",
+    description: "Stir-fried rice noodles with shrimp, peanuts, bean sprouts, and tangy tamarind sauce",
+    price: 15.99,
+    image: "images/pad-thai.png",
+    badge: "Popular"
+  },
+  {
+    id: 8,
+    name: "Sushi Platter",
+    category: "Asian Cuisine",
+    description: "Assorted nigiri and maki rolls with fresh salmon, tuna, and premium sashimi",
+    price: 28.99,
+    image: "images/sushi-platter.png",
+    badge: "Chef's Pick"
+  },
+  {
+    id: 9,
+    name: "Dim Sum Basket",
+    category: "Asian Cuisine",
+    description: "Steamed dumplings including har gow, siu mai, and char siu bao",
+    price: 16.99,
+    image: "images/dim-sum.png",
+    badge: null
+  },
+  {
+    id: 10,
+    name: "Carbonara Pasta",
+    category: "Italian",
+    description: "Creamy spaghetti with crispy pancetta, egg yolk, and aged parmesan",
+    price: 17.99,
+    image: "images/carbonara.png",
+    badge: null
+  },
+  {
+    id: 11,
+    name: "Mushroom Risotto",
+    category: "Italian",
+    description: "Creamy arborio rice with mixed wild mushrooms, truffle oil, and parmesan",
+    price: 19.99,
+    image: "images/risotto.png",
+    badge: "Chef's Pick"
+  },
+  {
+    id: 12,
+    name: "Tiramisu",
+    category: "Desserts",
+    description: "Classic Italian dessert with espresso-soaked ladyfingers and mascarpone cream",
+    price: 8.99,
+    image: "images/tiramisu.png",
+    badge: null
+  },
+  {
+    id: 13,
+    name: "BBQ Ribs",
+    category: "American",
+    description: "Slow-cooked pork ribs glazed with smoky BBQ sauce, served with coleslaw",
+    price: 24.99,
+    image: "images/bbq-ribs.png",
+    badge: "Best Seller"
+  },
+  {
+    id: 14,
+    name: "Mac & Cheese",
+    category: "American",
+    description: "Creamy baked macaroni with sharp cheddar and crispy breadcrumb topping",
+    price: 12.99,
+    image: "images/mac-cheese.png",
+    badge: "Comfort Food"
+  },
+  {
+    id: 15,
+    name: "Cheesecake",
+    category: "Desserts",
+    description: "New York style cheesecake with graham cracker crust and fresh strawberry topping",
+    price: 9.99,
+    image: "images/cheesecake.png",
+    badge: null
+  },
+  {
+    id: 16,
+    name: "Burrito Bowl",
+    category: "Mexican",
+    description: "Cilantro lime rice, black beans, grilled chicken, avocado, and fresh salsa",
+    price: 14.99,
+    image: "images/burrito-bowl.png",
+    badge: "Healthy"
+  },
+  {
+    id: 17,
+    name: "Quesadilla",
+    category: "Mexican",
+    description: "Grilled flour tortilla with melted cheese, chicken, and served with sides",
+    price: 13.49,
+    image: "images/quesadilla.png",
+    badge: null
+  },
+  {
+    id: 18,
+    name: "Churros",
+    category: "Desserts",
+    description: "Crispy fried dough pastries dusted with cinnamon sugar and chocolate sauce",
+    price: 7.99,
+    image: "images/churros.png",
+    badge: null
+  },
+  {
+    id: 19,
+    name: "Lobster Roll",
+    category: "Seafood",
+    description: "Fresh lobster meat on a toasted bun with butter, lemon, and chives",
+    price: 26.99,
+    image: "images/lobster-roll.png",
+    badge: "Premium"
+  },
+  {
+    id: 20,
+    name: "Fish Tacos",
+    category: "Seafood",
+    description: "Grilled fish with purple cabbage slaw, cilantro lime crema, and fresh radish",
+    price: 15.99,
+    image: "images/fish-tacos.png",
+    badge: null
+  },
+  {
+    id: 21,
+    name: "Chocolate Lava Cake",
+    category: "Desserts",
+    description: "Warm chocolate cake with molten center, served with vanilla ice cream",
+    price: 10.99,
+    image: "images/lava-cake.png",
+    badge: "Popular"
+  },
+  {
+    id: 22,
+    name: "Ice Cream Sundae",
+    category: "Desserts",
+    description: "Classic vanilla ice cream with chocolate sauce, whipped cream, and cherry",
+    price: 6.99,
+    image: "images/ice-cream-sundae.png",
+    badge: null
   }
 ];
 
@@ -255,13 +399,37 @@ function checkout() {
     return;
   }
 
-  const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const tax = total * 0.08;
+  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const tax = subtotal * 0.08;
+  const total = subtotal + tax;
 
-  alert(`Order placed successfully!\n\nSubtotal: $${total.toFixed(2)}\nTax: $${tax.toFixed(2)}\nTotal: $${(total + tax).toFixed(2)}\n\nThank you for ordering with FlavorDash!`);
+  // Create order object
+  const order = {
+    id: 'ORD-' + Date.now(),
+    date: new Date().toISOString(),
+    items: cart.map(item => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      quantity: item.quantity,
+      image: item.image
+    })),
+    subtotal: subtotal,
+    tax: tax,
+    total: total,
+    status: 'Pending'
+  };
+
+  // Save to localStorage
+  let orders = JSON.parse(localStorage.getItem('orders') || '[]');
+  orders.push(order);
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  alert(`Order placed successfully!\n\nOrder ID: ${order.id}\nSubtotal: $${subtotal.toFixed(2)}\nTax: $${tax.toFixed(2)}\nTotal: $${total.toFixed(2)}\n\nThank you for ordering with FlavorDash!`);
 
   cart = [];
   updateCartUI();
+  toggleCart();
 }
 
 // Filter functionality
