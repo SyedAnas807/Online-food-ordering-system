@@ -455,6 +455,9 @@ button {
   overflow: hidden;
   transition: all var(--transition-base);
   border: 1px solid rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .food-card:hover {
@@ -467,6 +470,7 @@ button {
   position: relative;
   height: 200px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .food-card-image img {
@@ -495,6 +499,9 @@ button {
 
 .food-card-content {
   padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .food-card-category {
@@ -523,6 +530,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .food-card-price {
